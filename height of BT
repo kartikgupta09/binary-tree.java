@@ -1,0 +1,40 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Node root = createTree();
+		height(root);
+	}
+	static Node createTree(){
+	    Scanner sc = new Scanner(System.in);
+	    Node root = null;
+	    System.out.println("enter data");
+	    int data = sc.nextInt();
+	    if(data ==-1) return null;
+	    
+	    root = new Node(data);
+	    
+	    System.out.println("enter data for left"+ data);
+	    root.left = createTree();
+	    System.out.println("enter data for right"+ data);
+	    root.right = createTree();
+	    
+	    return root;
+	    
+	}
+	static int height(Node root){
+	    if(root == null){
+	        return 0;
+	    }
+	    return Math.max(height(root.left),height(root.right))+1;
+	}
+}
+class Node{
+    Node left , right;
+    int data;
+    
+    public Node(int data){
+        this.data = data;
+    }
+}
