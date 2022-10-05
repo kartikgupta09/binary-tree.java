@@ -1,0 +1,38 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    Node root = createTree();
+	    max(root);
+	}
+	static Node createTree(){
+	    Scanner sc = new Scanner(System.in);
+        Node root = null;
+        System.out.println("enter data");
+        int data = sc.nextInt();
+        if(data == -1){
+            return null;
+        }
+        root = new Node(data);
+        System.out.println("enter left value"+data);
+        root.left = createTree();
+        System.out.println("enter right value"+data);
+        root.left = createTree();
+        return root;
+	}//calculating the largest node//
+	static int max(Node root){
+	    if(root == null){
+	        return Integer.MIN_VALUE;
+	    }
+	    return Math.max(root.data,Math.max(max(root.left),max(root.right)));
+	}
+}
+class Node{
+	    Node left, right;
+	    int data;
+	    public Node(int data){
+	        this.data = data;
+	    }
+	    
+	}
