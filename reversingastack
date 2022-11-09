@@ -1,0 +1,35 @@
+import java.util.Stack;
+
+public class reversestack {
+    public static void pushAtlast(int data, Stack<Integer> s){
+        if(s.isEmpty()){
+            s.push(data);
+            return;
+        }
+        int top =  s.pop();
+        pushAtlast(data,s);
+        s.push(top);
+    }
+    public static void reverse(Stack<Integer> s){
+        if(s.isEmpty()){
+            return;
+        }
+        int top = s.pop();
+        reverse(s);
+        pushAtlast(top,s);
+
+    }
+
+    public static void main(String[] args) {
+        Stack<Integer> s = new Stack<>();
+        s.push(12);
+        s.push(13);
+        s.push(45);
+        reverse(s);
+        while (!s.isEmpty()){
+            System.out.println((s.peek()));
+            s.pop();
+        }
+    }
+
+}
