@@ -1,0 +1,59 @@
+public class queueusingLL {
+    static class node {
+        int data;
+        node next;
+
+        node(int data) {
+            this.data = data;
+            next = null;
+        }
+    }
+    static node head;
+    static node tail;
+    public static boolean isEmpty(){
+        return head == null & tail == null;
+    }
+    public static void add(int data){
+        node newNode = new node(data);
+        if(tail == null){
+            tail = newNode;
+            head = newNode;
+        }
+        tail.next = newNode;
+        tail = newNode;
+    }
+    public static int remove(){
+        if(isEmpty()){
+            System.out.println("queue is empty");
+            return -1;
+        }
+        int first = head.data;
+        if(head == tail){
+            tail = null;
+        }
+        head = head.next;
+        return first;
+
+    }
+    public static int peek(){
+        if(isEmpty()){
+            return -1;
+        }
+        return head.data;
+    }
+
+
+
+
+    public static void main(String[] args) {
+        queueusingLL q = new queueusingLL();
+        q.add(1);
+        q.add(2);
+        q.add(3);
+        while(!q.isEmpty()){
+            System.out.println(q.peek());
+            q.remove();
+        }
+
+    }
+}
